@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue</title>
+</head>
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <div id="app">
+
+    <!-- 
+    visualizzare o no un elemento in base ad una proprieotà
+    questo attributo ha bisogno di un booleano
+    -->
+    <h1 v-if="number > 1">
+      M'ama
+    </h1>
+    <h2 v-else-if="number < 1">
+      Non m'ama
+    </h2>
+    <em v-else>
+      Friendzone
+    </em>
+    <!-- 
+      possiamo inserire anche un else
+      dobbiamo stare attenti che questi elementi
+      siano fratelli diretti e adiacenti
+     -->
+
+
+    <!-- la proprietà v-show visualizza o meno un elemento in pagina,
+    andando a dargli una proprietà di stile 
+  'display: none' in caso la condizione espressa sia falsa -->
+    <div v-show="number > 1">
+      <strong>Eccomi</strong>
+    </div>
+    <!-- notare infatti la differenza nel codice dell'inspector -->
+
+
+    <ul>
+      <!-- visualizzare un elemento html
+      per ogni elemento di un array
+
+                          Questo 'in' è parola chiave 
+                                      v
+      la sintassi è: elementoSingolo in arrayDalData
+
+  elemento singolo, chiamiamolo come vogliamo
+       (ci restituisce un nuovo oggetto,
+             è creata da zero)
+                    |          
+                    |        array (dal data)
+                    v          v    -->
+      <li v-for="(alunno) in alunniArray" class="nome">
+        {{alunno}}, ha {{alunno.length}} lettere.
+      </li>
+
+    </ul>
+
+    <hr>
+
+
+    <ul>
+      <li v-for="telefono in telefoni" > 
+        
+        {{ telefono.modello }}: 
+        <strong v-if="telefono.prezzo > 1000">{{telefono.prezzo - 100 }}€ (-100€)</strong>
+        <strong v-else>{{ telefono.prezzo }}€</strong>
+
+      </li>
+
+    </ul>
+
+    <hr>
+
+
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
